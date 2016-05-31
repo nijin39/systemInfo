@@ -1,0 +1,914 @@
+<!-- light-blue - v3.3.0 - 2016-03-08 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SDS Linux Dashboard</title>
+
+    <link href="static/css/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+                                                           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                                                                      https://code.google.com/p/chromium/issues/detail?id=332189
+                                                        */
+    </script>
+</head>
+
+<body>
+    <div class="logo">
+        <h4><a href="index.html">SDS <strong>EDU</strong></a></h4>
+    </div>
+    <nav id="sidebar" class="sidebar nav-collapse collapse">
+        <ul id="side-nav" class="side-nav">
+            <li class="active">
+                <a href="index.html"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+            </li>
+            <li class="panel ">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Registration</span></a>
+                <ul id="forms-collapse" class="panel-collapse collapse ">
+                    <li class=""><a href="form_account.html">User</a></li>
+                    <li class=""><a href="form_article.html">System</a></li </ul>
+            </li>
+            <li class="visible-xs">
+                <a href="login.html"><i class="fa fa-sign-out"></i> <span class="name">Sign Out</span></a>
+            </li>
+            </ul>
+    </nav>
+    <div class="wrap">
+        <header class="page-header">
+            <div class="navbar">
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li class="visible-phone-landscape">
+                        <a href="#" id="search-toggle">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" title="Messages" id="messages" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-comment"></i>
+                        </a>
+                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="static/img/1.png" alt="">
+                                    <div class="details">
+                                        <div class="sender">Jane Hew</div>
+                                        <div class="text">
+                                            Hey, John! How is it going? ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="static/img/2.png" alt="">
+                                    <div class="details">
+                                        <div class="sender">Alies Rumiancaŭ</div>
+                                        <div class="text">
+                                            I'll definitely buy this template
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="static/img/3.png" alt="">
+                                    <div class="details">
+                                        <div class="sender">Michał Rumiancaŭ</div>
+                                        <div class="text">
+                                            Is it really Lore ipsum? Lore ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all messages <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" title="8 support tickets" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span class="count">8</span>
+                        </a>
+                        <ul id="support-menu" class="dropdown-menu support" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        Check out this awesome ticket
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        "What is the best way to get ...
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        This is just a simple notification
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        12 new orders has arrived today
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        One more thing that just happened
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all tickets <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <!--Setting Incon-->
+                    <!--<li class="hidden-xs">
+                        <a href="#" id="settings"
+                           title="Settings"
+                           data-toggle="popover"
+                           data-placement="bottom">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </a>
+                    </li>-->
+                    <li class="hidden-xs dropdown">
+                        <a href="#" title="Account" id="account" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </a>
+                        <ul id="account-menu" class="dropdown-menu account" role="menu">
+                            <li role="presentation" class="account-picture">
+                                <img src="static/img/2.png" alt=""> Philip Daineka
+                            </li>
+                            <li role="presentation">
+                                <a href="form_account.html" class="link">
+                                    <i class="fa fa-user"></i> Profile
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="component_calendar.html" class="link">
+                                    <i class="fa fa-calendar"></i> Calendar
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="link">
+                                    <i class="fa fa-inbox"></i> Inbox
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#" class="btn-navbar" data-toggle="collapse" data-target=".sidebar" title="">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs"><a href="login.html"><i class="glyphicon glyphicon-off"></i></a></li>
+                </ul>
+                <form id="search-form" class="navbar-form pull-right" role="search">
+                    <input type="search" class="form-control search-query" placeholder="Search...">
+                </form>
+
+                <!--notification-->
+                <!--<div class="notifications pull-right">
+                    <div class="alert pull-right">
+                        <a href="#" class="close ml-xs" data-dismiss="alert">&times;</a>
+                        <i class="fa fa-info-circle mr-xs"></i> Check out Light Blue <a id="notification-link" href="#">settings</a> on the right!
+                    </div>
+                </div>-->
+            </div>
+        </header>
+        <div class="content container">
+            <h2 class="page-title">Dashboard <small>Statistics and more</small></h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                System
+                                <small>
+                                    information
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+
+                        <div id='system-info'></div>
+                    </section>
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Network
+                                <small>
+                                    usage
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Interface</th>
+                                    <th>IP</th>
+                                    <th>Receive</th>
+                                    <th>Transmit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>eth0</td>
+                                    <td>192.168.2.64</td>
+                                    <td>298.03MB</td>
+                                    <td>19.01MB</td>
+                                </tr>
+                                <tr>
+                                    <td>lo</td>
+                                    <td>127.0.0.1</td>
+                                    <td>1.9KB</td>
+                                    <td>1.9KB</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class="col-lg-6">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Load
+                                <small>
+                                    Average
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <!--<div style="width: 600px; height: 400px; margin: 0 auto">-->
+                            <!--<div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>-->
+                            <div class="row" style="width: 100%; margin: 0 auto">
+                                <div class="col-lg-4">
+                                    <div id="container-speed" style="width: 100%; height: 155px; float:left;"></div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div id="container-speed2" style="width: 100%; height: 155px; float:left"></div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div id="container-rpm" style="width: 100%; height: 155px;  float:left"></div>
+                                </div>
+                            </div>
+
+                    </section>
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Cpu
+                                <small>
+                                    information
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>VALUE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Model</td>
+                                    <td>Intel(R)Xeon(R) CPU E5-1620 v2 @ 3.70GHz</td>
+                                </tr>
+                                <tr>
+                                    <td>Cores</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>3654.323 Mhz</td>
+                                </tr>
+                                <tr>
+                                    <td>Cache</td>
+                                    <td>6144 KB</td>
+                                </tr>
+                                <tr>
+                                    <td>Cogomips</td>
+                                    <td>7308.64</td>
+                                </tr>
+                                <tr>
+                                    <td>Temperature</td>
+                                    <td>39 C</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Disk
+                                <small>
+                                    Usage
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Filesystem</th>
+                                    <th>Mount</th>
+                                    <th>Use</th>
+                                    <th>Free</th>
+                                    <th>Used</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>/dev/sda1</td>
+                                    <td>/</td>
+                                    <td>37%</td>
+                                    <td>1.42GB</td>
+                                    <td>818.07MB</td>
+                                    <td>2.36GB</td>
+                                </tr>
+                                <tr>
+                                    <td>/dev/sda4</td>
+                                    <td>/var</td>
+                                    <td>10%</td>
+                                    <td>2GB</td>
+                                    <td>212.04MB</td>
+                                    <td>2.34GB</td>
+                                </tr>
+                                <tr>
+                                    <td>/dev/sda3</td>
+                                    <td>/home</td>
+                                    <td>1%</td>
+                                    <td>2.53GB</td>
+                                    <td>4.21MB</td>
+                                    <td>2.69GB</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Memory
+                                <small>
+                                    Usage
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>VALUE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Used %</td>
+                                    <td>16%</td>
+                                </tr>
+                                <tr>
+                                    <td>Used</td>
+                                    <td>80.28MB
+                                        <td>
+                                </tr>
+                                <tr>
+                                    <td>Free</td>
+                                    <td>414.17MB</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>494.45MB</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class="col-lg-6">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Swap
+                                <small>
+                                    Usage
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>VALUE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Used %</td>
+                                    <td>16%</td>
+                                </tr>
+                                <tr>
+                                    <td>Used</td>
+                                    <td>80.28MB
+                                        <td>
+                                </tr>
+                                <tr>
+                                    <td>Free</td>
+                                    <td>414.17MB</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>494.45MB</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Last
+                                <small>
+                                    Login
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>VALUE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>root</td>
+                                    <td>Jul Mon +0200 13</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                Ping
+                                <small>
+                                    Status
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>VALUE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>facebook.com</td>
+                                    <td>119.212 ms</td>
+                                </tr>
+                                <tr>
+                                    <td>google.com</td>
+                                    <td>18.790 ms</td>
+                                </tr>
+                                <tr>
+                                    <td>yahoo.com</td>
+                                    <td>216.167 ms</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <section class="widget">
+                        <header>
+                            <h4>
+                                SERVICE
+                                <small>
+                                    STATUS
+                                </small>
+                            </h4>
+                            <div class="widget-controls">
+                                <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </header>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Name</th>
+                                    <th>Port</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ONLINE</td>
+                                    <td>Web Server</td>
+                                    <td>80</td>
+                                </tr>
+                                <tr>
+                                    <td>OFFLINE</td>
+                                    <td>Email Server(incoming)</td>
+                                    <td>993</td>
+                                </tr>
+                                <tr>
+                                    <td>OFFLINE</td>
+                                    <td>Email Server(outgoing)</td>
+                                    <td>587</td>
+                                </tr>
+                                <tr>
+                                    <td>OFFLINE</td>
+                                    <td>FTP Server</td>
+                                    <td>21</td>
+                                </tr>
+                                <tr>
+                                    <td>OFFLINE</td>
+                                    <td>Database Server</td>
+                                    <td>3306</td>
+                                </tr>
+                                <tr>
+                                    <td>ONLINE</td>
+                                    <td>SSH</td>
+                                    <td>22</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+    </div>
+    <!-- common libraries. required for every page-->
+    <script src="static/lib/jquery/dist/jquery.min.js"></script>
+    <script src="static/lib/jquery-pjax/jquery.pjax.js"></script>
+    <script src="static/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="static/lib/widgster/widgster.js"></script>
+    <script src="static/lib/underscore/underscore.js"></script>
+    <script src="static/lib/handlebars/handlebars.js"></script>
+
+    <!--chart library-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+    <!-- common application js -->
+    <script src="static/js/app.js"></script>
+    <script src="static/js/settings.js"></script>
+
+    <!-- page specific scripts -->
+    <!-- page libs -->
+    <script src="static/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="static/lib/jquery.sparkline/index.js"></script>
+
+    <script src="static/lib/backbone/backbone.js"></script>
+    <script src="static/lib/backbone.localStorage/backbone.localStorage-min.js"></script>
+
+    <script src="static/lib/d3/d3.min.js"></script>
+    <script src="static/lib/nvd3/build/nv.d3.min.js"></script>
+
+    <!-- page application js -->
+    <script src="static/js/index.js"></script>
+    <script src="static/js/chat.js"></script>
+
+    <!-- page template -->
+    <script type="text/template" id="message-template">
+        <div class="sender pull-left">
+            <div class="icon">
+                <img src="static/img/2.png" class="img-circle" alt="">
+            </div>
+            <div class="time">
+                just now
+            </div>
+        </div>
+        <div class="chat-message-body">
+            <span class="arrow"></span>
+            <div class="sender"><a href="#">Tikhon Laninga</a></div>
+            <div class="text">
+                <%- text %>
+            </div>
+        </div>
+    </script>
+
+    {% raw %}
+    <script id="system-info-template" type="text/x-handlebars-template">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hostname</td>
+                    <td>{{hostname}}</td>
+                </tr>
+                <tr>
+                    <td>OS</td>
+                    <td>{{os}}</td>
+                </tr>
+                <tr>
+                    <td>Kernel version</td>
+                    <td>{{kernel}}</td>
+                </tr>
+                <tr>
+                    <td>Uptime</td>
+                    <td>{{uptime}}</td>
+                </tr>
+                <tr>
+                    <td>Lastboot</td>
+                    <td>{{lastboot}}</td>
+                </tr>
+                <tr>
+                    <td>Current user(s)</td>
+                    <td>{{current-user}}</td>
+                </tr>
+                <tr>
+                    <td>Server date & time</td>
+                    <td>{{server-time}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    {% endraw %}
+    <script>
+        function render(sourceDiv, targetDiv, dataSource) {
+            var source = $(sourceDiv).html();
+            var template = Handlebars.compile(source);
+
+            $.getJSON(dataSource, function(data) {
+                console.log(dataSource);
+                $(targetDiv).append(template(data));
+            });
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            render("#system-info-template", "#system-info", "static/data/system-info.json")
+        });
+    </script>
+    
+    <script>
+        
+        $(function () {
+
+    var gaugeOptions = {
+
+        chart: {
+            type: 'solidgauge'
+        },
+
+        title: null,
+
+        pane: {
+            center: ['50%', '85%'],
+            size: '140%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+
+        tooltip: {
+            enabled: false
+        },
+
+        // the value axis
+        yAxis: {
+            stops: [
+                [0.1, '#55BF3B'], // green
+                [0.5, '#DDDF0D'], // yellow
+                [0.9, '#DF5353'] // red
+            ],
+            lineWidth: 0,
+            minorTickInterval: null,
+            tickPixelInterval: 400,
+            tickWidth: 0,
+            title: {
+                y: -70
+            },
+            labels: {
+                y: 16
+            }
+        },
+
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    };
+
+    // The speed gauge
+    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 200,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [80],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                       '<span style="font-size:12px;color:silver">1 Min Load</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' %'
+            }
+        }]
+
+    }));
+    
+    $('#container-speed2').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 200,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [80],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                       '<span style="font-size:12px;color:silver">5 Min Load</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' %'
+            }
+        }]
+
+    }));
+
+    // The RPM gauge
+    $('#container-rpm').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 5,
+        },
+
+        series: [{
+            name: 'RPM',
+            data: [1],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' +
+                       '<span style="font-size:12px;color:silver">10 Min Load</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' %'
+            }
+        }]
+
+    }));
+
+    // Bring life to the dials
+    setTimeout(function () {
+        // Speed
+        var chart = $('#container-speed').highcharts(),
+            point,
+            newVal,
+            inc;
+
+        if (chart) {
+            point = chart.series[0].points[0];
+            inc = Math.round((Math.random() - 0.5) * 100);
+            newVal = point.y + inc;
+
+            if (newVal < 0 || newVal > 200) {
+                newVal = point.y - inc;
+            }
+
+            point.update(120);
+        }
+
+        // RPM
+        chart = $('#container-rpm').highcharts();
+        if (chart) {
+            point = chart.series[0].points[0];
+            inc = Math.random() - 0.5;
+            newVal = point.y + inc;
+
+            if (newVal < 0 || newVal > 5) {
+                newVal = point.y - inc;
+            }
+
+            point.update(newVal);
+        }
+    }, 2000);
+
+
+});
+    </script>
+
+</body>
+
+</html>

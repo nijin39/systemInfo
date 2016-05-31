@@ -1,0 +1,52 @@
+(dp0
+S'errorLog'
+p1
+(lp2
+(dp3
+S'count'
+p4
+I3
+sS'message'
+p5
+S'cinnamon-screensaver-dialog: pam_ecryptfs: seteuid error'
+p6
+sa(dp7
+g4
+I1
+sg5
+S'kernel: [    8.032554] EXT4-fs (sda1): re-mounted. Opts: errors=remount-ro'
+p8
+sa(dp9
+g4
+I1
+sg5
+S"NetworkManager[708]: <error> [1464671615.378724] [nm-dns-dnsmasq.c:396] update(): dnsmasq owner not found on bus: Could not get owner of name 'org.freedesktop.NetworkManager.dnsmasq': no such name"
+p10
+sasS'warnLog'
+p11
+(lp12
+(dp13
+g4
+I1
+sg5
+S'avahi-daemon[4971]: *** WARNING: Detected another IPv4 mDNS stack running on this host. This makes mDNS unreliable and is thus not recommended. ***'
+p14
+sa(dp15
+g4
+I1
+sg5
+S'mdm[1112]: WARNING: Plymouth is running, asking it to stop...'
+p16
+sa(dp17
+g4
+I1
+sg5
+S'mdm[1112]: WARNING: Plymouth stopped'
+p18
+sa(dp19
+g4
+I1
+sg5
+S'dnsmasq[1165]: warning: no upstream servers configured'
+p20
+sas.

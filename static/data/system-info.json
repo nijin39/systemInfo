@@ -1,0 +1,9 @@
+{
+    "hostname": "cohona",
+    "os": "ubuntu 12.04",
+    "kernel" : "3.16.0-4-amd64",
+    "uptime" : "1 day, 1 hour and 27 minutes",
+    "lastboot" : "2015.07.13 10:32:46",
+    "current-user" : "2",
+    "server-time" : "Mon jul 13 16:16:55 KST 2016"
+}
