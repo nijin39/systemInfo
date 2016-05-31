@@ -302,6 +302,3 @@ def getWarnLog():
 			result[LogDataMessage[1]] = 1
 
 	return result
-
-
-
