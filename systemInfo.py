@@ -142,12 +142,15 @@ def getSwapInfo():
     return dic
 
 def getLastLogin():
+    host = commands.getoutput('whoami')
     #get lastlog command output into text
-    text = commands.getoutput('lastlog') 
+    text = commands.getoutput('last | grep '+ host)
     #convert string type and split by space and put in to result
-    result =  str(text).split()
-    #find lastest login id from result
-    print result[-4]
+    temp =  str(text).split()
+    result = temp[3]+'  '
+    result += temp[4]+ '  '+temp[5]+'  '+temp[6] 
+    dic = {host:result}
+    return dic
 
 def getCPULoad():
     # Execute commands and parsing
