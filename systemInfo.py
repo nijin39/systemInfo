@@ -87,20 +87,15 @@ def getNetwork():
     text = commands.getstatusoutput('netstat -ni')
     text = text[1]
     text = text.split("\n")
-    
+
     #put the interface name in the list
     index = 0
-
     interfaces = []
-    for line in text :
-        # delete title row
+    for str in text :
         if index < 2 :
             index += 1
             continue
-        
-        interfaces.append(line.split()[0])
-
-           
+        interfaces.append(str.split()[0])
     #create commands with the interface name from the list
     returnVal = []
     for interface in interfaces :
@@ -108,14 +103,17 @@ def getNetwork():
         result2 = result.split("\n")[1].split(":")[1].split(" ")[0]
         result = result.split("\n")[-2]
         result = result.split("(")
-        
-        returnVal.append(interface)
-        returnVal.append(result2)
-        returnVal.append(result[1].split(")")[0])
-        returnVal.append(result[2].split(")")[0])
-    
-    print returnVal
+        #returnVal.append(interface)
+        #returnVal.append(result2)
+        #returnVal.append(result[1].split(")")[0])
+        #returnVal.append(result[2].split(")")
 
+        results = {"INTERPACE" : interface,
+                   "IP" :  result2,
+                   "RECEIVE" : result[1].split(")")[0],
+                   "TRANSMIT" : result[2].split(")")[0]} 
+        returnVal.append(results)
+    return returnVal
 
 def doCmd():
     popen = Popen("free -h",stdout=PIPE,stderr=PIPE,shell=True)
@@ -142,14 +140,22 @@ def getSwapInfo():
     return dic
 
 def getLastLogin():
-    host = commands.getoutput('whoami')
+    # host = commands.getoutput('last')
+    #host = host[0:8]
     #get lastlog command output into text
-    text = commands.getoutput('last | grep '+ host)
+    text = commands.getoutput('lastlog')
     #convert string type and split by space and put in to result
-    temp =  str(text).split()
-    result = temp[3]+'  '
-    result += temp[4]+ '  '+temp[5]+'  '+temp[6] 
-    dic = {host:result}
+    temp =  str(text).split("\n")
+    del temp[0]
+    for line in temp:
+        word = str(line).split()
+        if not word[1].startswith('**'):
+            dic={}
+            dic[word[0]] = word[3]+' '+word[4]+ ' '+word[5]+' '+word[6] 
+    # print temp
+    # result = temp[3]+'  '
+    #result += temp[4]+ '  '+temp[5]+'  '+temp[6] 
+    #dic = {host:result}
     return dic
 
 def getCPULoad():
@@ -158,7 +164,7 @@ def getCPULoad():
     text = str(text[1]).split()
    
     # return values: [1m, 5m, 10m]
-    return text[7],text[8],text[9]
+    return text[7][:-1],text[8][:-1],text[9]
 
 def getUptime():
 	# 02. 결과 값을 , 를 기준으로 나누어 결과값을 출력한다
@@ -182,17 +188,23 @@ def getDiskInformation():
     return diskInformation
 
 def getPing():
-    #01. ping결과 중 경과시간에 해당하는 라인만 저장 
-    pingOutput = commands.getoutput('ping -c 5 google.com | grep rtt')
-    
+    pingList = ['www.google.com','www.facebook.com','www.yahoo.com','www.samsung.com']
+    result = {}
+    for item in pingList:
+    	#01. ping결과 중 경과시간에 해당하는 라인만 저장 
+    	pingOutput = commands.getoutput('ping -c 1 ' + item + ' | grep rtt')
         #02. =으로 스플릿한 후, /로 스플릿하여 반응속도만 추출 
-    listOfSplitByEq = pingOutput.split('=')
-    listOfSplitBySlash = listOfSplitByEq[1].strip().split('/')
-    
-    #03. min, avg, max 순으로 리스트에 저장 
-    pingData = listOfSplitBySlash[0:3]
-    
-    return pingData
+    	listOfSplitByEq = pingOutput.split(' = ')
+        if listOfSplitByEq[0] == '':
+            result[item] = '---'
+        elif len(listOfSplitByEq) == 1 :
+	    result[item] = '---'
+        else:
+    	    listOfSplitBySlash = listOfSplitByEq[1].strip().split('/')
+    	#03. min, avg, max 순으로 리스트에 저장 
+    	    pingData = listOfSplitBySlash[0:3]
+            result[item] = pingData[1]
+    return result
 
 def getCpuTime():
     # get Cpu date & time : format "day, month, day, hour, minute, seconds, time slot, year"
@@ -217,13 +229,8 @@ def getCpuInfo():
         if line.rstrip('\n').startswith('bogomips'):
             bogomips = line.rstrip('\n').split(':')[1].strip()
     #05. 결과값에 사전형으로 내용을 저장 후 리
-    results = {"model_name": model_name,
-          "cores": cores,
-          "speed": speed,
-          "cache": cache,
-          "bogomlips": bogomips}
-    
-    return results
+    dic = {"model_name": model_name,"cores": cores,"speed": speed,"cache": cache,"bogomlips": bogomips} 
+    return dic
 
 # remove duplicate values in array
 def removeDup(li):
@@ -256,21 +263,21 @@ def getListenPort():
 
 def getDate():
 	#get date : form == weekday[0], day[1] month[2] year[3] hh:mm:ss[4] UTC[5]
-	ToDay = commands.getoutput("date -R")
+	ToDay = commands.getoutput("date")
 	return ToDay.split()
 
 def getErrLogPrev():
 	#get syslog contains 'error' keyword at today
 	#form == month day hh:mm:ss hostname Message ...
 	ToDaySplit = getDate()
-	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + ToDaySplit[2] + " " + ToDaySplit[1] + "' | grep -ie 'error'")
+	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + ToDaySplit[1] + " " + ToDaySplit[2].rjust(2) + "' | grep -ie 'error'")
 	return LogData.split('\n')
 
 def getWarnLogPrev():
 	#get syslog contains 'warn' keyword at today
 	#form == month day hh:mm:ss hostname Message ...
 	ToDaySplit = getDate()
-	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + ToDaySplit[2] + " " + ToDaySplit[1] + "' | grep -ie 'warning'")
+	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + ToDaySplit[1] + " " + ToDaySplit[2].rjust(2) + "' | grep -ie 'warning'")
 	return LogData.split('\n')
 
 def getErrLog():
@@ -279,12 +286,13 @@ def getErrLog():
 	#and return result dictionary{message : count}
 	LogDataSplit = getErrLogPrev()
 	result = {}
-	for row in LogDataSplit:
-		LogDataMessage = row.split(" " + commands.getoutput("hostname") + " ")
-		if LogDataMessage[1] in result:
-			result[LogDataMessage[1]] = result[LogDataMessage[1]] + 1
-		else:
-			result[LogDataMessage[1]] = 1
+	if LogDataSplit[0] != '':
+		for row in LogDataSplit:
+			LogDataMessage = row.split(" " + commands.getoutput("hostname") + " ")
+			if LogDataMessage[1] in result:
+				result[LogDataMessage[1]] = result[LogDataMessage[1]] + 1
+			else:
+				result[LogDataMessage[1]] = 1
 
 	return result
 
@@ -294,11 +302,12 @@ def getWarnLog():
 	#and return result dictionary{message : count}
 	LogDataSplit = getWarnLogPrev()
 	result = {}
-	for row in LogDataSplit:
-		LogDataMessage = row.split(" " + commands.getoutput("hostname") + " ")
-		if LogDataMessage[1] in result:
-			result[LogDataMessage[1]] = result[LogDataMessage[1]] + 1
-		else:
-			result[LogDataMessage[1]] = 1
+	if LogDataSplit[0] != '':
+		for row in LogDataSplit:
+			LogDataMessage = row.split(" " + commands.getoutput("hostname") + " ")
+			if LogDataMessage[1] in result:
+				result[LogDataMessage[1]] = result[LogDataMessage[1]] + 1
+			else:
+				result[LogDataMessage[1]] = 1
 
 	return result
