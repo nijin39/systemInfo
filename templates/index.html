@@ -245,30 +245,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Interface</th>
-                                    <th>IP</th>
-                                    <th>Receive</th>
-                                    <th>Transmit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>eth0</td>
-                                    <td>192.168.2.64</td>
-                                    <td>298.03MB</td>
-                                    <td>19.01MB</td>
-                                </tr>
-                                <tr>
-                                    <td>lo</td>
-                                    <td>127.0.0.1</td>
-                                    <td>1.9KB</td>
-                                    <td>1.9KB</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id='network-usage'></div>
                     </section>
                 </div>
                 <div class="col-lg-6">
@@ -308,45 +285,14 @@
                                     information
                                 </small>
                             </h4>
+
+
                             <div class="widget-controls">
                                 <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Model</td>
-                                    <td>Intel(R)Xeon(R) CPU E5-1620 v2 @ 3.70GHz</td>
-                                </tr>
-                                <tr>
-                                    <td>Cores</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Speed</td>
-                                    <td>3654.323 Mhz</td>
-                                </tr>
-                                <tr>
-                                    <td>Cache</td>
-                                    <td>6144 KB</td>
-                                </tr>
-                                <tr>
-                                    <td>Cogomips</td>
-                                    <td>7308.64</td>
-                                </tr>
-                                <tr>
-                                    <td>Temperature</td>
-                                    <td>39 C</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id='cpu-info'></div>
                     </section>
                 </div>
             </div>
@@ -365,44 +311,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Filesystem</th>
-                                    <th>Mount</th>
-                                    <th>Use</th>
-                                    <th>Free</th>
-                                    <th>Used</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>/dev/sda1</td>
-                                    <td>/</td>
-                                    <td>37%</td>
-                                    <td>1.42GB</td>
-                                    <td>818.07MB</td>
-                                    <td>2.36GB</td>
-                                </tr>
-                                <tr>
-                                    <td>/dev/sda4</td>
-                                    <td>/var</td>
-                                    <td>10%</td>
-                                    <td>2GB</td>
-                                    <td>212.04MB</td>
-                                    <td>2.34GB</td>
-                                </tr>
-                                <tr>
-                                    <td>/dev/sda3</td>
-                                    <td>/home</td>
-                                    <td>1%</td>
-                                    <td>2.53GB</td>
-                                    <td>4.21MB</td>
-                                    <td>2.69GB</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id='disk-usage'></div>
                     </section>
                 </div>
             </div>
@@ -421,33 +330,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Used %</td>
-                                    <td>16%</td>
-                                </tr>
-                                <tr>
-                                    <td>Used</td>
-                                    <td>80.28MB
-                                        <td>
-                                </tr>
-                                <tr>
-                                    <td>Free</td>
-                                    <td>414.17MB</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td>494.45MB</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id='mem-usage'></div>
                     </section>
                 </div>
                 <div class="col-lg-6">
@@ -464,33 +347,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Used %</td>
-                                    <td>16%</td>
-                                </tr>
-                                <tr>
-                                    <td>Used</td>
-                                    <td>80.28MB
-                                        <td>
-                                </tr>
-                                <tr>
-                                    <td>Free</td>
-                                    <td>414.17MB</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td>494.45MB</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id='swap-usage'></div>
                     </section>
                 </div>
             </div>
@@ -546,20 +403,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>root</td>
-                                    <td>Jul Mon +0200 13</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id = "last-login" />
                     </section>
                 </div>
                 <div class="col-lg-4">
@@ -576,28 +420,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>facebook.com</td>
-                                    <td>119.212 ms</td>
-                                </tr>
-                                <tr>
-                                    <td>google.com</td>
-                                    <td>18.790 ms</td>
-                                </tr>
-                                <tr>
-                                    <td>yahoo.com</td>
-                                    <td>216.167 ms</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id = "ping" />
                     </section>
                 </div>
                 <div class="col-lg-4">
@@ -614,47 +437,7 @@
                                 <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </header>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Name</th>
-                                    <th>Port</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ONLINE</td>
-                                    <td>Web Server</td>
-                                    <td>80</td>
-                                </tr>
-                                <tr>
-                                    <td>OFFLINE</td>
-                                    <td>Email Server(incoming)</td>
-                                    <td>993</td>
-                                </tr>
-                                <tr>
-                                    <td>OFFLINE</td>
-                                    <td>Email Server(outgoing)</td>
-                                    <td>587</td>
-                                </tr>
-                                <tr>
-                                    <td>OFFLINE</td>
-                                    <td>FTP Server</td>
-                                    <td>21</td>
-                                </tr>
-                                <tr>
-                                    <td>OFFLINE</td>
-                                    <td>Database Server</td>
-                                    <td>3306</td>
-                                </tr>
-                                <tr>
-                                    <td>ONLINE</td>
-                                    <td>SSH</td>
-                                    <td>22</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id = "service-status" />
                     </section>
                 </div>
             </div>
@@ -749,34 +532,223 @@
             <tbody>
                 <tr>
                     <td>Hostname</td>
-                    <td>{{results.hostname}}</td>
+                    <td>{{hostname}}</td>
                 </tr>
                 <tr>
                     <td>OS</td>
-                    <td>{{results.os}}</td>
+                    <td>{{os}}</td>
                 </tr>
                 <tr>
                     <td>Kernel version</td>
-                    <td>{{results.kernel}}</td>
+                    <td>{{kernel}}</td>
                 </tr>
                 <tr>
                     <td>Uptime</td>
-                    <td>{{results.uptime}}</td>
+                    <td>{{uptime}}</td>
                 </tr>
                 <tr>
                     <td>Lastboot</td>
-                    <td>{{results.lastboot}}</td>
+                    <td>{{lastboot}}</td>
                 </tr>
                 <tr>
                     <td>Current user(s)</td>
-                    <td>{{results.current-user}}</td>
+                    <td>{{current-user}}</td>
                 </tr>
                 <tr>
                     <td>Server date & time</td>
-                    <td>{{results.server-time}}</td>
+                    <td>{{server-time}}</td>
                 </tr>
             </tbody>
         </table>
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="cpu-info-template" type="text/x-handlebars-template">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Model</td>
+                    <td>{{Model}}</td>
+                </tr>
+                <tr>
+                    <td>Cores</td>
+                    <td>{{Cores}}</td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td>{{Speed}}</td>
+                </tr>
+                <tr>
+                    <td>Cache</td>
+                    <td>{{Cache}}</td>
+                </tr>
+                <tr>
+                    <td>Bogomips</td>
+                    <td>{{Bogomips}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="network-template" type="text/x-handlebars-template">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Interface</th>
+                    <th>IP</th>
+                    <th>Receive</th>
+                    <th>Transmit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#result}}
+                    <tr>
+                        <td>{{interface}}</td>
+                        <td>{{ip}}</td>
+                        <td>{{receive}}</td>
+                        <td>{{transmit}}</td>
+                    </tr>
+                {{/result}}
+            </tbody>
+        </table>
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="disk-usage-template" type="text/x-handlebars-template">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Filesystem</th>
+                    <th>Mount</th>
+                    <th>Use</th>
+                    <th>Free</th>
+                    <th>Used</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#result}}
+                    <tr>
+                        <td>{{filesystem}}</td>
+                        <td>{{mount}}</td>
+                        <td>{{use}}</td>
+                        <td>{{free}}</td>
+                        <td>{{used}}</td>
+                        <td>{{total}}</td>
+                    </tr>
+                {{/result}}
+            </tbody>
+        </table>
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="mem-usage-template" type="text/x-hadlebars-template">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Used %</td>
+                                    <td>{{use}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Used</td>
+                                    <td>{{used}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Free</td>
+                                    <td>{{free}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>{{total}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+			
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="last-login-template" type="text/x-hadlebars-template">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#result}}
+                                <tr>
+                                    <td>{{hostId}}</td>
+                                    <td>{{Date}}</td>
+                                </tr>
+                                {{/result}}
+                            </tbody>
+                        </table>
+			
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="ping-template" type="text/x-hadlebars-template">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#result}}
+                                <tr>
+                                    <td>{{host}}</td>
+                                    <td>{{time}} ms</td>
+                                </tr>
+                        	{{/result}}
+                            </tbody>
+                        </table>
+			
+    </script>
+    {% endraw %}
+
+    {% raw %}
+    <script id="service-template" type="text/x-hadlebars-template">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Name</th>
+                                    <th>Port</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#result}}
+                                <tr>
+                                    <td>{{status}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{port}}</td>
+                                </tr>
+                        	{{/result}}
+                            </tbody>
+                        </table>
+			
     </script>
     {% endraw %}
     
@@ -787,29 +759,42 @@
 
             $.getJSON(dataSource, function(data) {
                 console.log(dataSource);
-                $(targetDiv).append(template(data));
+                $(targetDiv).html(template(data));
             });
         }
     </script>
 
     <script>
         $(document).ready(function() {
-            render("#system-info-template", "#system-info", "/getSystemInfo")
+            render("#system-info-template", "#system-info", "/getSystem")
+            render("#cpu-info-template", "#cpu-info", "/getCpuInfo")
+            render("#disk-usage-template", "#disk-usage", "/getDiskUsage")
+            render("#mem-usage-template", "#mem-usage", "/getMemUsage")
+            render("#mem-usage-template", "#swap-usage", "/getSwapUsage")
             render("#log-template","#error-log", "/getErrorLog")
             render("#log-template","#warnning-log", "/getWarnLog")
-        });
+            render("#last-login-template","#last-login", "/getLastLogin")
+            render("#ping-template","#ping", "/getPing")
+            render("#network-template", "#network-usage", "/getNetworkUsage")
+            render("#service-template", "#service-status", "/getService")
+
+			setInterval(function() {
+				render("#network-template", "#network-usage", "/getNetworkUsage")
+				render("#disk-usage-template", "#disk-usage", "/getDiskUsage")
+				render("#last-login-template","#last-login", "/getLastLogin")
+			        render("#log-template","#error-log", "/getErrorLog")
+                                render("#log-template","#warnning-log", "/getWarnLog")
+			},2000);
+		});
     </script>
-    
-        <script>
+  
+    <script>
         $(function() {
             var gaugeOptions = {
-
                 chart: {
                     type: 'solidgauge'
                 },
-
                 title: null,
-
                 pane: {
                     center: ['50%', '85%'],
                     size: '140%',
@@ -822,11 +807,9 @@
                         shape: 'arc'
                     }
                 },
-
                 tooltip: {
                     enabled: false
                 },
-
                 // the value axis
                 yAxis: {
                     stops: [
@@ -845,7 +828,6 @@
                         y: 16
                     }
                 },
-
                 plotOptions: {
                     solidgauge: {
                         dataLabels: {
@@ -856,18 +838,15 @@
                     }
                 }
             };
-
             // The speed gauge
             $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
                 yAxis: {
                     min: 0,
                     max: 1,
                 },
-
                 credits: {
                     enabled: false
                 },
-
                 series: [{
                     name: 'Speed',
                     data: [0.5],
@@ -880,19 +859,15 @@
                         valueSuffix: ' %'
                     }
                 }]
-
             }));
-
             $('#container-speed2').highcharts(Highcharts.merge(gaugeOptions, {
                 yAxis: {
                     min: 0,
                     max: 1,
                 },
-
                 credits: {
                     enabled: false
                 },
-
                 series: [{
                     name: 'Speed',
                     data: [0.5],
@@ -905,16 +880,13 @@
                         valueSuffix: ' %'
                     }
                 }]
-
             }));
-
             // The RPM gauge
             $('#container-rpm').highcharts(Highcharts.merge(gaugeOptions, {
                 yAxis: {
                     min: 0,
                     max: 1,
                 },
-
                 series: [{
                     name: 'RPM',
                     data: [0.5],
@@ -927,9 +899,7 @@
                         valueSuffix: ' %'
                     }
                 }]
-
             }));
-
             // Bring life to the dials
             setInterval(function() {
                 $.get("/getCpuLoad", function(data) {
@@ -940,12 +910,10 @@
                         point,
                         newVal,
                         inc;
-
                     if (chart) {
                         point = chart.series[0].points[0];
                         point.update(parseFloat(result[0]));
                     }
-
                     // RPM
                     chart = $('#container-rpm').highcharts();
                     if (chart) {
@@ -960,10 +928,9 @@
                     }
                 });
                 }, 2000);
-
-
         });
     </script>
+
 
 </body>
 

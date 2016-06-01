@@ -87,47 +87,55 @@ def getNetwork():
     text = commands.getstatusoutput('netstat -ni')
     text = text[1]
     text = text.split("\n")
-
+    
     #put the interface name in the list
     index = 0
+
     interfaces = []
-    for str in text :
+    for line in text :
+        # delete title row
         if index < 2 :
             index += 1
             continue
-        interfaces.append(str.split()[0])
+        
+        interfaces.append(line.split()[0])
+     
     #create commands with the interface name from the list
     returnVal = []
     for interface in interfaces :
-        result = commands.getstatusoutput('ifconfig ' + interface)[1]
+        result = commands.getstatusoutput('/sbin/ifconfig ' + interface)[1]
         result2 = result.split("\n")[1].split(":")[1].split(" ")[0]
         result = result.split("\n")[-2]
         result = result.split("(")
-        #returnVal.append(interface)
-        #returnVal.append(result2)
-        #returnVal.append(result[1].split(")")[0])
-        #returnVal.append(result[2].split(")")
-
-        results = {"INTERPACE" : interface,
-                   "IP" :  result2,
-                   "RECEIVE" : result[1].split(")")[0],
-                   "TRANSMIT" : result[2].split(")")[0]} 
-        returnVal.append(results)
+        
+        dic = {'interface' : interface, 'ip' : result2, 'receive':result[1].split(")")[0], 'transmit':result[2].split(")")[0]}
+        returnVal.append(dic)
+    
     return returnVal
 
-def doCmd():
+
+def doFree():
+    popen = Popen("free",stdout=PIPE,stderr=PIPE,shell=True)
+    out,err = popen.communicate()
+    return out.split()
+
+def doFreeH():
     popen = Popen("free -h",stdout=PIPE,stderr=PIPE,shell=True)
     out,err = popen.communicate()
-    out = out.split()
-    return out
+    return out.split()
 
 def getMemInfo():
 #popen = object for process open
 #out, err = result of process
 #dic = summary of memory info
 #7: total of  mem, 8: used of  mem, 9: free of mem, 10:shared of mem, 11: buffer of mem, 12:cached of mem 
-    out = doCmd()
-    dic = {'total':out[7],'used':out[8],'free':out[9],'shared':out[10],'buffers':out[11],'cached':out[12]}
+    out = doFree()
+    used = float(out[8])
+    total = float(out[7])
+    if total == 0.0:
+        total = 1.0
+    out = doFreeH()
+    dic = {'total':out[7],'used':out[8],'free':out[9],'use':str(int(used/total*100)) + '%'}
     return dic
 
 def getSwapInfo():
@@ -135,34 +143,33 @@ def getSwapInfo():
     # out, err = result of process
     # dic = summary of swap info
     #18: total of wap, 19: used of swap, 20: free of swap
-    out = doCmd()
-    dic = {'total':out[18],'used':out[19],'free':out[20]}
+    out = doFree()
+    used = float(out[19])
+    total = float(out[18])
+    if total == 0.0:
+        total = 1.0
+    out = doFreeH()
+    dic = {'total':out[18],'used':out[19],'free':out[20],'use':str(int(used/total*100)) + '%'}
     return dic
 
 def getLastLogin():
-    # host = commands.getoutput('last')
-    #host = host[0:8]
-    #get lastlog command output into text
     text = commands.getoutput('lastlog')
     #convert string type and split by space and put in to result
     temp =  str(text).split("\n")
+    list = []
+    dic={}
     del temp[0]
     for line in temp:
         word = str(line).split()
         if not word[1].startswith('**'):
-            dic={}
-            dic[word[0]] = word[3]+' '+word[4]+ ' '+word[5]+' '+word[6] 
-    # print temp
-    # result = temp[3]+'  '
-    #result += temp[4]+ '  '+temp[5]+'  '+temp[6] 
-    #dic = {host:result}
-    return dic
+            dic={'hostId': word[0], 'Date':word[3]+' '+word[4]+ ' '+word[5]+' '+word[6]}
+            list.append(dic)
+    return list
 
 def getCPULoad():
     # Execute commands and parsing
-    text = commands.getstatusoutput('uptime')
-    text = str(text[1]).split()
-   
+    text = commands.getoutput('uptime').split()
+    
     # return values: [1m, 5m, 10m]
     return text[7][:-1],text[8][:-1],text[9]
 
@@ -193,7 +200,8 @@ def getPing():
     for item in pingList:
     	#01. ping결과 중 경과시간에 해당하는 라인만 저장 
     	pingOutput = commands.getoutput('ping -c 1 ' + item + ' | grep rtt')
-        #02. =으로 스플릿한 후, /로 스플릿하여 반응속도만 추출 
+    
+        	#02. =으로 스플릿한 후, /로 스플릿하여 반응속도만 추출 
     	listOfSplitByEq = pingOutput.split(' = ')
         if listOfSplitByEq[0] == '':
             result[item] = '---'
@@ -201,9 +209,11 @@ def getPing():
 	    result[item] = '---'
         else:
     	    listOfSplitBySlash = listOfSplitByEq[1].strip().split('/')
+    
     	#03. min, avg, max 순으로 리스트에 저장 
     	    pingData = listOfSplitBySlash[0:3]
             result[item] = pingData[1]
+
     return result
 
 def getCpuTime():
@@ -229,8 +239,13 @@ def getCpuInfo():
         if line.rstrip('\n').startswith('bogomips'):
             bogomips = line.rstrip('\n').split(':')[1].strip()
     #05. 결과값에 사전형으로 내용을 저장 후 리
-    dic = {"model_name": model_name,"cores": cores,"speed": speed,"cache": cache,"bogomlips": bogomips} 
-    return dic
+    results = {"Model": model_name,
+          "Cores": cores,
+          "Speed": speed + " Mhz",
+          "Cache": cache,
+          "Bogomips": bogomips}
+    
+    return results
 
 # remove duplicate values in array
 def removeDup(li):
@@ -262,22 +277,23 @@ def getListenPort():
     return portList
 
 def getDate():
-	#get date : form == weekday[0], day[1] month[2] year[3] hh:mm:ss[4] UTC[5]
-	ToDay = commands.getoutput("date")
-	return ToDay.split()
+    #get date : form == weekday[0], month[1] day[2] year[3] hh:mm:ss[4] UTC[5]
+    Monparse = {'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'}
+    Month = commands.getoutput("date '+%m'")
+    ToDay = Monparse[Month] + commands.getoutput("date '+ %_d'")
+    return ToDay 
 
 def getErrLogPrev():
 	#get syslog contains 'error' keyword at today
 	#form == month day hh:mm:ss hostname Message ...
-	ToDaySplit = getDate()
-	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + ToDaySplit[1] + " " + ToDaySplit[2].rjust(2) + "' | grep -ie 'error'")
+	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + getDate() + "' | grep -ie 'error'")
 	return LogData.split('\n')
 
 def getWarnLogPrev():
 	#get syslog contains 'warn' keyword at today
 	#form == month day hh:mm:ss hostname Message ...
 	ToDaySplit = getDate()
-	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + ToDaySplit[1] + " " + ToDaySplit[2].rjust(2) + "' | grep -ie 'warning'")
+	LogData = commands.getoutput("cat /var/log/syslog | grep '^" + getDate() + "' | grep -ie 'warning'")
 	return LogData.split('\n')
 
 def getErrLog():
